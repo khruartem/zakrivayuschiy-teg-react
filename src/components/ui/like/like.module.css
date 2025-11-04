@@ -1,0 +1,6 @@
+.like-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-self: flex-end;
+}

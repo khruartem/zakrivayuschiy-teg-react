@@ -1,0 +1,9 @@
+.main_stand-by {
+  width: 100dvw;
+  height: 100dvh;
+  background-image: url(https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGIzaG1wdjRxNHExNTlwdHZ4czkxZWx3MmUzYW56Zjl5bjd6aThlNiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/iIGQ6j28glbnZCu0mv/giphy.gif);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+  cursor: pointer;
+}

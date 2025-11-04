@@ -1,0 +1,1 @@
+export { LikeUI } from "./like";

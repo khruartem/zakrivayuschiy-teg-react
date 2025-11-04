@@ -1,0 +1,40 @@
+:root.theme-light {
+  --main-color: #fff;
+  --accent-color: #000;
+  --card-text-font-weight: 400;
+  --card-title-font-weight: 700;
+  --card-info-text-color: #fff;
+  --background-image: repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px), repeating-linear-gradient(to top, #d3d3d3 0 2px, transparent 2px 4px), linear-gradient(#e7e7e7 0.01%, #1a1a1a);
+  --text-stroke: #fff;
+  --button-text-color: #fff;
+  --heart-contur-color: #000;
+  --heart-color: #ff0000;
+}
+
+:root.theme-dark {
+  --main-color: #000;
+  --accent-color: #00CC14;
+  --card-text-font-weight: 465;
+  --card-title-font-weight: 785;
+  --card-info-text-color: #00CC14;
+  --background-image: repeating-linear-gradient(to right, #000 0 2px, transparent 2px 4px), repeating-linear-gradient(to top, #000 0 2px, transparent 2px 4px), linear-gradient(#007f0c 0.01%, #004306);
+  --text-stroke: #000;
+  --button-text-color: #00CC14;
+  --heart-contur-color: #00CC14;
+  --heart-color: #ff0000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root.theme-auto {
+    --main-color: #000;
+    --accent-color: #00CC14;
+    --card-text-font-weight: 465;
+    --card-title-font-weight: 785;
+    --card-info-text-color: #00CC14;
+    --background-image: repeating-linear-gradient(to right, #000 0 2px, transparent 2px 4px), repeating-linear-gradient(to top, #000 0 2px, transparent 2px 4px), linear-gradient(#007f0c 0.01%, #004306);
+    --text-stroke: #000;
+    --button-text-color: #00CC14;
+    --heart-contur-color: #00CC14;
+    --heart-color: #ff0000;
+  }
+}

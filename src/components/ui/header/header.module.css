@@ -1,0 +1,30 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
+  padding-inline: 5vw;
+  /* color: var(--accent-color); */
+  font-family: var(--accent-font), serif;
+  background-color: var(--accent-color);
+}
+
+.header__wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 60px;
+}
+
+.logo_header {
+  font-size: 32px;
+  line-height: 48px;
+}

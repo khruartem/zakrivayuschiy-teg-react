@@ -1,0 +1,15 @@
+:root {
+  --main-font: 'Press Start 2P';
+  --accent-font: 'Press Start 2P';
+  --card-text-font-weight: 400;
+  --card-title-font-weight: 700;
+  --card-info-text-color: #fff;
+  --main-color: #fff;
+  --accent-color: #000;
+  --background-image: repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px), repeating-linear-gradient(to top, #d3d3d3 0 2px, transparent 2px 4px), linear-gradient(#e7e7e7 0.01%, #1a1a1a);
+  --section-width: 100%;
+  --text-stroke: #fff;
+  --button-text-color: #fff;
+  --heart-contur-color: #000;
+  --heart-color: #ff0000;
+}

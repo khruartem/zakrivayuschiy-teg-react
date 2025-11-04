@@ -1,0 +1,21 @@
+.image-label {
+  position: absolute;
+  top: clamp(25px, 1.8vw, 27px);
+  right: clamp(13px, 1.8vw, 25px);
+  z-index: 1;
+  opacity: 0.5;
+  color: var(--accent-color, #000);
+  font-family: var(--accent-font, 'Press Start 2P'), fantasy;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  text-shadow: 1px 1px 0 0 var(--text-stroke, #fff);
+  mix-blend-mode: hard-light;
+}
+
+@supports((text-stroke: 1px #fff) or (-webkit-text-stroke: 1px #fff)) {
+  .image-label {
+    text-shadow: none;
+    -webkit-text-stroke: 1px var(--text-stroke, #fff);
+  }
+}
