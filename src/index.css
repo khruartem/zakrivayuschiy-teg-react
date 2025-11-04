@@ -1,4 +1,6 @@
-@import url(../src//styles/themes.module.css);
+@import url(../src/styles/themes.module.css);
+@import url(../src/fonts/fonts.module.css);
+@import url(../src/styles/variables.module.css);
 
 *,
 *::after,
