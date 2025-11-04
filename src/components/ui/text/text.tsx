@@ -7,7 +7,7 @@ import styles from "./text.module.css";
 
 export const TextUI: FC<TTextUIProps> = ({ text, className }) => {
   return (
-    <p className={clsx(styles.card__description, className && className)}>
+    <p className={clsx(styles.card__text, className && className)}>
       {text}
     </p>
   );
