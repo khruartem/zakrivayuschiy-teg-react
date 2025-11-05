@@ -8,10 +8,11 @@ import type { TCard } from "../../utils/types";
 
 import { useGetCard } from "../../hooks/cards/useGetCard";
 import { useGetCardsLoading } from "../../hooks/cards/useGetCardsLoading";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "../../services/store";
 
 import { getCard } from "../../features/cards/cardsSlice";
+import { useEscKey } from "../../hooks/useEscKey";
 
 export const CardInfo: FC = () => {
   const dispatch = useDispatch();
@@ -25,10 +26,12 @@ export const CardInfo: FC = () => {
     dispatch(getCard(id || ""));
   }, [dispatch, id]);
 
+  useEscKey(returnUrl);
+
   return loading ? (
     <PreloaderUI />
   ) : card ? (
-    <CardInfoUI card={card} returnUrl={returnUrl} />
+    <CardInfoUI card={card} />
   ) : (
     <NotFound404 />
   );

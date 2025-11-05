@@ -1,15 +1,13 @@
 @font-face {
   font-display: swap;
-  font-family: 'Inter';
-  src:
-    url('./Inter-Variable.woff2') format('woff2 supports variations'),
-    url('./Inter-Variable.woff2') format('woff2-variations');
-  font-weight: 400 785;
+  font-family: 'Press Start 2P';
+  src: url('./PressStart2P-Regular.woff') format('woff2');
+  font-weight: 400;
 }
 
 @font-face {
   font-display: swap;
-  font-family: 'Press Start 2P';
-  src: url('./PressStart2P-Regular.woff') format('woff2');
+  font-family: 'vt323regular';
+  src: url('./vt323-regular-webfont.woff2') format('woff2');
   font-weight: 400;
 }

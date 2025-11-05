@@ -6,10 +6,7 @@ import { Cards } from "../../pages/cards";
 import { Card } from "../../pages/card";
 import { NotFound404 } from "../../pages/404";
 
-import { useGetMediaQuery } from "../../hooks/cards/useGetMediaQuery";
-
-import "../../styles/variables.module.css";
-import "../../fonts/fonts.module.css";
+import { useGetMediaQuery } from "../../hooks/useGetMediaQuery";
 
 export const App = () => {
   const { isBroken } = useGetMediaQuery();

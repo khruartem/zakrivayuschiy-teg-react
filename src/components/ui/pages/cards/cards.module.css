@@ -1,15 +1,11 @@
 .main_cards {
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   gap: 102px;
   padding-block: 100px;
   color: var(--accent-color, #000);
-  font-family: var(--main-font, 'Inter'), sans-serif;
-  font-size: 18px;
-  line-height: 21px;
+  font-family: var(--accent-font), sans-serif;
+  font-size: 16px;
+  line-height: 20px;
   background-image:
     var(--background-image,
       repeating-linear-gradient(to right, #d3d3d3 0 2px, transparent 2px 4px),
@@ -17,9 +13,4 @@
       linear-gradient(#e7e7e7 0.01%, #1a1a1a));
   background-size: cover;
   background-attachment: fixed;
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
-  inline-size: 100%;
-  /* block-size: 100dvb; */
-  font-variation-settings: 'wght' var(--card-text-font-weight, 400);
 }

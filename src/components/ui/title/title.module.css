@@ -1,8 +1,5 @@
 .card__title {
-  --card-text-font-weight: var(--card-title-font-weight, 700);
   padding: 3px 10px 4px;
   font-size: 18px;
   line-height: 22px;
-
-  font-variation-settings: 'wght' var(--card-text-font-weight, 400);
 }
