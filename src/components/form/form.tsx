@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, type FC } from "react";
+import { useLayoutEffect, useRef, type FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FormUI } from "../ui/form";
@@ -15,13 +15,10 @@ import type { TCardData } from "../../utils/types";
 import {
   getCardDataSelector,
   setCardData,
-  clearCardData,
 } from "../../features/cards/cardsSlice";
-import { useDispatch } from "../../services/store";
 
 export const Form: FC<TFormProps> = ({ onSubmit, returnUrl }) => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const loading = useGetIsLoading();
@@ -36,12 +33,6 @@ export const Form: FC<TFormProps> = ({ onSubmit, returnUrl }) => {
       inputRef.current.focus();
     }
   }, []);
-
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch(clearCardData());
-  //   };
-  // }, [dispatch]);
 
   const { values, handleChange, errors, isValid, handleIsValid } =
     useFormWithValidation<TCardData>(
