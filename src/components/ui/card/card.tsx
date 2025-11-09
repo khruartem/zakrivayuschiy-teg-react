@@ -13,9 +13,12 @@ import type { TCardUIProps } from "./types";
 import styles from "./card.module.css";
 import sharedStyles from "../../../styles/shared.module.css";
 import { Delete } from "../../delete";
+import { Edit } from "../../edit";
 
 export const CardUI: FC<TCardUIProps> = ({ card }) => {
-  const { id, title, tag, image, text, like } = card;
+  const { id, ...data } = card;
+  const { title, tag, image, text, like } = data;
+
   return (
     <Link
       className={styles.card}
@@ -33,6 +36,7 @@ export const CardUI: FC<TCardUIProps> = ({ card }) => {
         <TextUI text={text} />
         <div className={styles.card__controls}>
           <Like cardId={id} like={like} />
+          <Edit cardId={id} data={data} />
           <Delete cardId={id} />
         </div>
       </div>

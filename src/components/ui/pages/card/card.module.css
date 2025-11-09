@@ -1,6 +1,5 @@
 .main_info {
-  position: absolute;
-  inset: 0;
+  justify-content: center;
   color: var(--card-info-text-color);
   font-family: var(--accent-font), serif;
   background-color: black;

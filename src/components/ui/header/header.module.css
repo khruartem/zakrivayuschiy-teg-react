@@ -24,6 +24,12 @@
   gap: 60px;
 }
 
+.header__health {
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+}
+
 .logo_header {
   font-size: 32px;
   line-height: 48px;

@@ -1,25 +1,33 @@
 import { useEffect, type FC } from "react";
 
+import { Load } from "../load";
 import { CardsListUI } from "../ui/cards-list";
-import { PreloaderUI } from "../ui/preloader";
 
 import { useGetCards } from "../../hooks/cards/useGetCards";
 import { useDispatch } from "../../services/store";
-import { useGetCardsLoading } from "../../hooks/cards/useGetCardsLoading";
+import { useGetIsLoading } from "../../hooks/useGetIsLoading";
 
 import { getCards } from "../../features/cards/cardsSlice";
+import { useGetError } from "../../hooks/useGetError";
 
 export const CardsList: FC = () => {
   const dispatch = useDispatch();
+
   const cardsUnsorted = useGetCards();
   const cards = [...cardsUnsorted].sort((a, b) => {
-    return a.order - b.order;
+    return b.created_at - a.created_at;
   });
-  const loading = useGetCardsLoading();
+
+  const loading = useGetIsLoading();
+  const errors = useGetError();
 
   useEffect(() => {
     dispatch(getCards());
   }, [dispatch]);
 
-  return loading ? <PreloaderUI /> : <CardsListUI cards={cards} />;
+  return (
+    <Load reload={"/cards"} loading={loading} errors={errors}>
+      <CardsListUI cards={cards} />
+    </Load>
+  );
 };

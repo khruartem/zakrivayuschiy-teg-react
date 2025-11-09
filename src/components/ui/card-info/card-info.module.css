@@ -8,29 +8,6 @@
   block-size: 100dvb;
 }
 
-.card__title_info {
-  border: none;
-  padding-block: 4vw;
-  color: var(--card-info-text-color);
-  font-weight: 400;
-  font-size: 42px;
-  line-height: 56px;
-  text-align: center;
-  background-color: unset;
-  font-variation-settings: unset;
-}
-
-.card__label {
-  position: absolute;
-  top: 16%;
-  left: 40%;
-  font-family: var(--main-font), serif;
-  font-weight: 400;
-  font-size: 32px;
-  font-style: normal;
-  line-height: 40px;
-}
-
 .card__image_info {
   aspect-ratio: unset;
 }

@@ -1,38 +1,42 @@
 import { useEffect, type FC } from "react";
 
-import { PreloaderUI } from "../ui/preloader";
+import { Load } from "../load";
+import { Return } from "../return";
 import { CardInfoUI } from "../ui/card-info";
-import { NotFound404 } from "../../pages/404";
 
 import type { TCard } from "../../utils/types";
 
 import { useGetCard } from "../../hooks/cards/useGetCard";
-import { useGetCardsLoading } from "../../hooks/cards/useGetCardsLoading";
+import { useGetIsLoading } from "../../hooks/useGetIsLoading";
+import { useGetError } from "../../hooks/useGetError";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "../../services/store";
 
 import { getCard } from "../../features/cards/cardsSlice";
-import { useEscKey } from "../../hooks/useEscKey";
 
 export const CardInfo: FC = () => {
   const dispatch = useDispatch();
 
   const { id } = useParams<Pick<TCard, "id">>();
   const card = useGetCard();
-  const loading = useGetCardsLoading();
+
+  const loading = useGetIsLoading();
+  const errors = useGetError();
+
   const returnUrl = "/cards";
 
   useEffect(() => {
     dispatch(getCard(id || ""));
   }, [dispatch, id]);
 
-  useEscKey(returnUrl);
-
-  return loading ? (
-    <PreloaderUI />
-  ) : card ? (
-    <CardInfoUI card={card} />
-  ) : (
-    <NotFound404 />
+  return (
+    <Load loading={loading} errors={errors} reload={`/cards/${id}`}>
+      {card && (
+        <>
+          <Return title={card.title} url={returnUrl} />
+          <CardInfoUI card={card} />
+        </>
+      )}
+    </Load>
   );
 };

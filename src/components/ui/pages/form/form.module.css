@@ -1,0 +1,9 @@
+.return__title_add-card {
+  text-transform: uppercase;
+  font-size: 56px;
+  line-height: normal;
+}
+
+.return__title_add-card::after {
+  top: 66%;
+}

@@ -5,12 +5,19 @@ import type { TButtonUIProps } from "./types";
 
 import styles from "./button.module.css";
 
-export const ButtonUI: FC<TButtonUIProps> = ({ text, pressed, onClick }) => {
+export const ButtonUI: FC<TButtonUIProps> = ({
+  text,
+  type,
+  disabled,
+  pressed,
+  onClick,
+}) => {
   return (
     <button
       id="button"
-      type="button"
+      type={type || "button"}
       onClick={onClick}
+      disabled={disabled}
       className={clsx(
         styles.button,
         styles.animated,

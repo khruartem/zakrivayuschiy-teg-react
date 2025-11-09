@@ -1,0 +1,16 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-block-size: 100dvb;
+}
+
+.main_solid {
+  background-color: black;
+}
+
+.main_dots {
+  background-image: var(--background-image);
+  background-size: cover;
+  background-attachment: fixed;
+}

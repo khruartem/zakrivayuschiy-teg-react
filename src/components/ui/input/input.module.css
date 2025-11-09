@@ -1,0 +1,31 @@
+.label {
+  position: relative;
+}
+
+.input {
+  width: 20vw;
+  height: 40px;
+  border: 4px solid var(--card-info-text-color);
+  padding-block: 1.8vw;
+  color: var(--card-info-text-color);
+  font-family: var(--accent-font);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: normal;
+  background-color: transparent;
+}
+
+.input:focus {
+  outline: 0;
+}
+
+.error {
+  position: absolute;
+  top: 40%;
+  right: -70%;
+  color: var(--heart-color);
+  font-family: var(--accent-font);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14px;
+}

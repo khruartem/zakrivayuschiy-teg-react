@@ -1,7 +1,7 @@
 import type { ActionCreatorWithPayload } from "@reduxjs/toolkit/react";
 import { useState, type ChangeEvent } from "react";
 
-import type { TErrorState, TFieldType, TFormValidators } from "../utils/types";
+import type { TErrorState, TFormValidators } from "../utils/types";
 
 import { useDispatch, useSelector, type RootState } from "../services/store";
 
@@ -10,11 +10,12 @@ type TUseFormWithValidation<T> = {
   handleChange: (evt: ChangeEvent<HTMLInputElement>) => void;
   errors: TErrorState<T>;
   isValid: boolean;
+  handleIsValid: (value: boolean) => void;
 };
 
-export function useFormWithValidation<T>(
+export function useFormWithValidation<T extends object>(
   selector: (state: RootState) => T,
-  setFormValue: ActionCreatorWithPayload<TFieldType<T>>,
+  setFormValue: ActionCreatorWithPayload<T>,
   validators: TFormValidators<T>
 ): TUseFormWithValidation<T> {
   const dispatch = useDispatch();
@@ -26,9 +27,10 @@ export function useFormWithValidation<T>(
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const input = evt.target;
     const value = input.value;
+    console.log(value);
     const name = input.name as keyof T;
     const isValid = validators[name]?.validator(value) ?? true;
-    dispatch(setFormValue({ field: name, value }));
+    dispatch(setFormValue({ [name]: value } as T));
     setErrors({
       ...errors,
       [name]: !isValid ? validators[name]!.message : undefined,
@@ -36,7 +38,11 @@ export function useFormWithValidation<T>(
     setIsValid(isValid);
   };
 
-  return { values, handleChange, errors, isValid };
+  const handleIsValid = (value: boolean) => {
+    setIsValid(value);
+  };
+
+  return { values, handleChange, errors, isValid, handleIsValid };
 }
 
 function initError<T>(a: T): TErrorState<T> {

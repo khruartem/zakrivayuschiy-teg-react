@@ -9,8 +9,6 @@ export const ImageUI: FC<TImageUIProps> = ({ src, alt, className }) => {
   return (
     <img
       loading="lazy"
-      // width={700}
-      // height={700}
       src={src}
       alt={alt}
       className={clsx(styles.card__image, className && className)}

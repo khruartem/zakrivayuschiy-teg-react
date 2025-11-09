@@ -1,15 +1,14 @@
 import type { FC } from "react";
-import clsx from "clsx";
 
+import { Layout } from "../../layout";
 import { CardInfo } from "../../../card-info";
 
 import styles from "./card.module.css";
-import sharedStyles from "../../../../styles/shared.module.css";
 
 export const CardUI: FC = () => {
   return (
-    <main className={clsx(sharedStyles.main, styles.main_info)}>
+    <Layout background={"solid"} className={styles.main_info}>
       <CardInfo />
-    </main>
+    </Layout>
   );
 };

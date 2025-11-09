@@ -1,5 +1,5 @@
 .logo {
-  color: var(--main-color);
+  color: var(--card-info-text-color);
   font-family: var(--accent-font), serif;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   line-height: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);

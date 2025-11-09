@@ -1,0 +1,24 @@
+.return__title {
+  position: relative;
+  width: 100%;
+  padding-block: 4vw;
+  color: var(--card-info-text-color);
+  font-family: var(--accent-font);
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 56px;
+  text-align: center;
+}
+
+.return__title::after {
+  content: "Press <esc> to resume";
+  position: absolute;
+  top: 76%;
+  left: 42%;
+  font-family: var(--main-font), serif;
+  font-weight: 400;
+  font-size: 30px;
+  font-style: normal;
+  line-height: 40px;
+  text-transform: none;
+}

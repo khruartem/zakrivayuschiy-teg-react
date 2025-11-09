@@ -8,17 +8,21 @@ export type TCard = {
   image: string;
   text: string;
   like: boolean;
-  order: number;
 };
 
-export type TCardData = Pick<
-  TCard,
-  "title" | "tag" | "image" | "text" | "like" | "order"
->;
+export type TCardData = Pick<TCard, "title" | "tag" | "image" | "text"> &
+  Partial<Pick<TCard, "like">>;
+
+export type TEditCardData = {
+  id: TCard["id"];
+  data: TCardData;
+};
+
+export type TCardDataValidation = Pick<TCardData, "title" | "text">;
 
 export type TFieldType<T> = {
   field: keyof T;
-  value: string;
+  value: T[keyof T] & never;
 };
 
 export type TFormValidators<T> = {
