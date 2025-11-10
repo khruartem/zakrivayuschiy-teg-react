@@ -70,7 +70,7 @@ import { FormPageUI } from "../../components/ui/pages/form";
 import type { TCardData } from "../../utils/types";
 
 import { useDispatch } from "../../services/store";
-import { addCard } from "../../features/cards/cardsSlice";
+import { addCard, clearCardData } from "../../features/cards/cardsSlice";
 
 export const AddCard: FC = () => {
   const dispatch = useDispatch();
@@ -80,6 +80,7 @@ export const AddCard: FC = () => {
   const handleSubmit = (evt: FormEvent<HTMLFormElement>, values: TCardData) => {
     evt.preventDefault();
     dispatch(addCard(values));
+    dispatch(clearCardData());
   };
   return (
     <FormPageUI

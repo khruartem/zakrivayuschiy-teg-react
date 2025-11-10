@@ -1,4 +1,4 @@
 export type TErrorProps = {
-  reloadUrl: string;
+  reloadUrl?: string;
   text: string;
 };

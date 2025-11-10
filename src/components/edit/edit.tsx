@@ -1,10 +1,14 @@
 import type { FC } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "../../services/store";
-import type { TEditProps } from "./types";
-import { getCard, setCardData } from "../../features/cards/cardsSlice";
+
 import { ButtonUI } from "../ui/button";
+
+import type { TEditProps } from "./types";
 import type { TCardData, uuid } from "../../utils/types";
+
+import { useDispatch } from "../../services/store";
+
+import { getCard, setCardData } from "../../features/cards/cardsSlice";
 
 export const Edit: FC<TEditProps> = ({ cardId, data }) => {
   const navigate = useNavigate();

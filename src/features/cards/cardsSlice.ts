@@ -40,6 +40,8 @@ type TCardsState = {
   cardInfo?: TCard;
   cardData: TCardData;
   loading: boolean;
+  loadingEdit: boolean;
+  loadingDetete: boolean;
   error: string | null;
 };
 
@@ -53,6 +55,8 @@ export const initialState: TCardsState = {
     like: false,
   },
   loading: false,
+  loadingEdit: false,
+  loadingDetete: false,
   error: null,
 };
 
@@ -84,6 +88,8 @@ export const cardsSlice = createSlice({
     getCardSelector: (state) => state.cardInfo,
     getCardDataSelector: (state) => state.cardData,
     getIsLoadingSelector: (state) => state.loading,
+    getIsLoadingEditSelector: (state) => state.loadingEdit,
+    getIsLoadingDeleteSelector: (state) => state.loadingDetete,
     getErrorSelector: (state) => state.error,
   },
   extraReducers: (builder) => {
@@ -128,28 +134,28 @@ export const cardsSlice = createSlice({
         state.cards.push(action.payload);
       })
       .addCase(deleteCard.pending, (state) => {
-        state.loading = true;
+        state.loadingDetete = true;
         state.error = null;
       })
       .addCase(deleteCard.rejected, (state, action) => {
-        state.loading = false;
+        state.loadingDetete = false;
         state.error = action.error.message ?? null;
       })
       .addCase(deleteCard.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loadingDetete = false;
         state.error = null;
         state.cards = state.cards.filter((card) => card.id !== action.payload);
       })
       .addCase(editCard.pending, (state) => {
-        state.loading = true;
+        state.loadingEdit = true;
         state.error = null;
       })
       .addCase(editCard.rejected, (state, action) => {
-        state.loading = false;
+        state.loadingEdit = false;
         state.error = action.error.message ?? null;
       })
       .addCase(editCard.fulfilled, (state, action) => {
-        state.loading = false;
+        state.loadingEdit = false;
         state.error = null;
         const updatedCard = action.payload;
         state.cards = state.cards.map((card) =>
@@ -166,5 +172,7 @@ export const {
   getCardDataSelector,
   getIsLoadingSelector,
   getErrorSelector,
+  getIsLoadingEditSelector,
+  getIsLoadingDeleteSelector,
 } = cardsSlice.selectors;
 export const { setLike, setCardData, clearCardData } = cardsSlice.actions;

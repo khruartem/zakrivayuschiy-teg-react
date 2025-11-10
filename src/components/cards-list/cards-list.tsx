@@ -26,7 +26,7 @@ export const CardsList: FC = () => {
   }, [dispatch]);
 
   return (
-    <Load reload={"/cards"} loading={loading} errors={errors}>
+    <Load loading={loading} errors={errors}>
       <CardsListUI cards={cards} />
     </Load>
   );

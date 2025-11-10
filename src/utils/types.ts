@@ -15,7 +15,7 @@ export type TCardData = Pick<TCard, "title" | "tag" | "image" | "text"> &
 
 export type TEditCardData = {
   id: TCard["id"];
-  data: TCardData;
+  data: Partial<TCardData>;
 };
 
 export type TCardDataValidation = Pick<TCardData, "title" | "text">;

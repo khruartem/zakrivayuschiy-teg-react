@@ -30,7 +30,7 @@ export const CardInfo: FC = () => {
   }, [dispatch, id]);
 
   return (
-    <Load loading={loading} errors={errors} reload={`/cards/${id}`}>
+    <Load loading={loading} errors={errors} reload={`/cards`}>
       {card && (
         <>
           <Return title={card.title} url={returnUrl} />

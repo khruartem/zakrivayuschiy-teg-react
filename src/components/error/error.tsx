@@ -9,7 +9,8 @@ export const Error: FC<TErrorProps> = ({ reloadUrl, text }) => {
   const navigate = useNavigate();
 
   const handleReload = () => {
-    navigate(reloadUrl);
+    if (reloadUrl) navigate(reloadUrl);
+    window.location.reload();
   };
 
   return <ErrorUI onReload={handleReload} text={text} />;
