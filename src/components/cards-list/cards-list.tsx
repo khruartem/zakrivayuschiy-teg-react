@@ -3,13 +3,12 @@ import { useEffect, type FC } from "react";
 import { Load } from "../load";
 import { CardsListUI } from "../ui/cards-list";
 
-import { useGetCards } from "../../hooks/cards/useGetCards";
 import { useDispatch } from "../../services/store";
 import { useGetIsLoading } from "../../hooks/useGetIsLoading";
-
-import { getCards } from "../../features/cards/cardsSlice";
 import { useGetError } from "../../hooks/useGetError";
 import { useGetFilteredCards } from "../../hooks/cards/useGetFilteredCards";
+
+import { getCards } from "../../features/cards/cardsSlice";
 
 export const CardsList: FC = () => {
   const dispatch = useDispatch();
