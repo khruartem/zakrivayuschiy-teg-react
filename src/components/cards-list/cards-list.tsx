@@ -9,11 +9,12 @@ import { useGetIsLoading } from "../../hooks/useGetIsLoading";
 
 import { getCards } from "../../features/cards/cardsSlice";
 import { useGetError } from "../../hooks/useGetError";
+import { useGetFilteredCards } from "../../hooks/cards/useGetFilteredCards";
 
 export const CardsList: FC = () => {
   const dispatch = useDispatch();
 
-  const cardsUnsorted = useGetCards();
+  const cardsUnsorted = useGetFilteredCards();
   const cards = [...cardsUnsorted].sort((a, b) => {
     return b.created_at - a.created_at;
   });

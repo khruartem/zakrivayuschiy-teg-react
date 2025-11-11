@@ -1,7 +1,7 @@
 .main_cards {
   justify-content: center;
   gap: 102px;
-  padding-block: 10vw;
+  padding-block: 7vw;
   color: var(--accent-color, #000);
   font-family: var(--accent-font), sans-serif;
   font-size: 16px;

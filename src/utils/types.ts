@@ -20,11 +20,6 @@ export type TEditCardData = {
 
 export type TCardDataValidation = Pick<TCardData, "title" | "text">;
 
-export type TFieldType<T> = {
-  field: keyof T;
-  value: T[keyof T] & never;
-};
-
 export type TFormValidators<T> = {
   [key in keyof T]: {
     validator: (value: string) => boolean;
@@ -33,3 +28,10 @@ export type TFormValidators<T> = {
 };
 
 export type TErrorState<T> = { [key in keyof T]: string };
+
+export type TFilterItem = "all" | "liked";
+
+export type TFilter = {
+  searchTerm?: string;
+  activeItem: TFilterItem;
+};

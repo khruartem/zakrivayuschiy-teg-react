@@ -1,0 +1,44 @@
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  width: fit-content;
+  min-height: 60px;
+  border-radius: 40px;
+  padding-inline: 15px;
+  background-color: var(--accent-color);
+}
+
+.filter-title {
+  width: 11vw;
+  color: var(--main-color);
+  text-align: center;
+}
+
+.filter-item {
+  padding: 10px;
+  color: var(--main-color);
+  font-family: var(--accent-font);
+  font-size: 16px;
+  line-height: normal;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.filter-item:hover {
+  text-decoration: underline;
+}
+
+.filter-item_active {
+  border-radius: 40px;
+  color: black;
+  background-color: white;
+}
+
+.filter-item_active:hover {
+  text-decoration: none;
+}

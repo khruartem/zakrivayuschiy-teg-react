@@ -10,7 +10,15 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { TCard, TCardData, TEditCardData, uuid } from "../../utils/types";
+import type {
+  TCard,
+  TCardData,
+  TEditCardData,
+  TFilter,
+  TFilterItem,
+  uuid,
+} from "../../utils/types";
+import { createSelector } from "reselect";
 
 export const getCards = createAsyncThunk("cards/getAll", async () =>
   getCardsApi()
@@ -39,6 +47,7 @@ type TCardsState = {
   cards: TCard[];
   cardInfo?: TCard;
   cardData: TCardData;
+  filter: TFilter;
   loading: boolean;
   loadingEdit: boolean;
   loadingDetete: boolean;
@@ -48,6 +57,9 @@ type TCardsState = {
 export const initialState: TCardsState = {
   cards: [],
   cardInfo: undefined,
+  filter: {
+    activeItem: "all",
+  },
   cardData: {
     title: "",
     image: "",
@@ -64,13 +76,6 @@ export const cardsSlice = createSlice({
   name: "cards",
   initialState,
   reducers: {
-    setLike: (state: TCardsState, action: PayloadAction<uuid>) => {
-      state.cards.forEach((card) => {
-        if (card.id === action.payload) {
-          card.like = !card.like;
-        }
-      });
-    },
     setCardData: (state: TCardsState, action: PayloadAction<TCardData>) => {
       state.cardData = { ...state.cardData, ...action.payload };
     },
@@ -82,6 +87,9 @@ export const cardsSlice = createSlice({
         like: false,
       };
     },
+    setFilterItem: (state, action: PayloadAction<TFilterItem>) => {
+      state.filter.activeItem = action.payload;
+    },
   },
   selectors: {
     getCardsSelector: (state) => state.cards,
@@ -91,6 +99,7 @@ export const cardsSlice = createSlice({
     getIsLoadingEditSelector: (state) => state.loadingEdit,
     getIsLoadingDeleteSelector: (state) => state.loadingDetete,
     getErrorSelector: (state) => state.error,
+    getFilterActiveItemSelector: (state) => state.filter.activeItem,
   },
   extraReducers: (builder) => {
     builder
@@ -174,5 +183,18 @@ export const {
   getErrorSelector,
   getIsLoadingEditSelector,
   getIsLoadingDeleteSelector,
+  getFilterActiveItemSelector,
 } = cardsSlice.selectors;
-export const { setLike, setCardData, clearCardData } = cardsSlice.actions;
+export const { setCardData, clearCardData, setFilterItem } = cardsSlice.actions;
+
+export const selectFilteredCards = createSelector(
+  [getCardsSelector, getFilterActiveItemSelector],
+  (allCards, filterItem) => {
+    switch (filterItem) {
+      case "all":
+        return allCards;
+      case "liked":
+        return allCards.filter((card) => card.like);
+    }
+  }
+);
