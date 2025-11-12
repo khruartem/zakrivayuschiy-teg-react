@@ -16,6 +16,7 @@ import type {
   TEditCardData,
   TFilter,
   TFilterItem,
+  TFilterSerachTerm,
   uuid,
 } from "../../utils/types";
 import { createSelector } from "reselect";
@@ -59,6 +60,7 @@ export const initialState: TCardsState = {
   cardInfo: undefined,
   filter: {
     activeItem: "all",
+    searchTerm: "",
   },
   cardData: {
     title: "",
@@ -90,6 +92,9 @@ export const cardsSlice = createSlice({
     setFilterItem: (state, action: PayloadAction<TFilterItem>) => {
       state.filter.activeItem = action.payload;
     },
+    setSearchTerm: (state, action: PayloadAction<TFilterSerachTerm>) => {
+      state.filter.searchTerm = action.payload;
+    },
   },
   selectors: {
     getCardsSelector: (state) => state.cards,
@@ -100,6 +105,7 @@ export const cardsSlice = createSlice({
     getIsLoadingDeleteSelector: (state) => state.loadingDetete,
     getErrorSelector: (state) => state.error,
     getFilterActiveItemSelector: (state) => state.filter.activeItem,
+    getFilterSearchTermSelector: (state) => state.filter.searchTerm,
   },
   extraReducers: (builder) => {
     builder
@@ -184,17 +190,30 @@ export const {
   getIsLoadingEditSelector,
   getIsLoadingDeleteSelector,
   getFilterActiveItemSelector,
+  getFilterSearchTermSelector,
 } = cardsSlice.selectors;
-export const { setCardData, clearCardData, setFilterItem } = cardsSlice.actions;
+export const { setCardData, clearCardData, setFilterItem, setSearchTerm } =
+  cardsSlice.actions;
 
 export const selectFilteredCards = createSelector(
-  [getCardsSelector, getFilterActiveItemSelector],
-  (allCards, filterItem) => {
+  [getCardsSelector, getFilterActiveItemSelector, getFilterSearchTermSelector],
+  (allCards, filterItem, searchTerm) => {
     switch (filterItem) {
       case "all":
-        return allCards;
-      case "liked":
-        return allCards.filter((card) => card.like);
+        return search(allCards, searchTerm);
+      case "liked": {
+        const likedCards = allCards.filter((card) => card.like);
+        return search(likedCards, searchTerm);
+      }
     }
   }
 );
+
+const search = (cards: TCard[], searchTerm: string) => {
+  if (!searchTerm) {
+    return cards;
+  }
+  return cards.filter((card) =>
+    card.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+};

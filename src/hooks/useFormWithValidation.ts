@@ -27,7 +27,6 @@ export function useFormWithValidation<T extends object>(
   const handleChange = (evt: ChangeEvent<HTMLInputElement>) => {
     const input = evt.target;
     const value = input.value;
-    console.log(value);
     const name = input.name as keyof T;
     const isValid = validators[name]?.validator(value) ?? true;
     dispatch(setFormValue({ [name]: value } as T));

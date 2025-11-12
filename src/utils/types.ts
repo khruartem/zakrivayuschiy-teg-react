@@ -30,8 +30,9 @@ export type TFormValidators<T> = {
 export type TErrorState<T> = { [key in keyof T]: string };
 
 export type TFilterItem = "all" | "liked";
+export type TFilterSerachTerm = string;
 
 export type TFilter = {
-  searchTerm?: string;
+  searchTerm: TFilterSerachTerm;
   activeItem: TFilterItem;
 };
