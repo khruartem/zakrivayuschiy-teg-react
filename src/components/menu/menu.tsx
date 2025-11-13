@@ -1,21 +1,17 @@
 import { useEffect, useState, type FC } from "react";
 
-import { ThemeMenuUI } from "../ui/theme-menu";
-import type { TThemeMenuOption } from "./types";
+import { MenuUI } from "../ui/menu";
+import type { TMenuOption } from "./types";
 
-export const ThemeMenu: FC = () => {
+export const Menu: FC = () => {
   const header = "game difficulty";
-  const options: TThemeMenuOption[] = [
+  const options: TMenuOption[] = [
     { value: "easy", description: "light" },
     { value: "moderate", description: "auto" },
     { value: "hard", description: "dark" },
   ];
 
-  const defaultIndex = 0;
-  const initIndex = () => {
-    const index = localStorage.getItem("active");
-    handleActive(index ? +index : defaultIndex);
-  };
+  const defaultIndex = Number(localStorage.getItem("active")) || 0;
 
   const [activeIndex, setActiveIndex] = useState<number>(defaultIndex);
 
@@ -30,12 +26,11 @@ export const ThemeMenu: FC = () => {
   };
 
   useEffect(() => {
-    initIndex();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    localStorage.setItem("active", `${defaultIndex}`);
+  }, [defaultIndex]);
 
   return (
-    <ThemeMenuUI
+    <MenuUI
       header={header}
       options={options}
       active={activeIndex}

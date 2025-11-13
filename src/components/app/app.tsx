@@ -1,14 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 
 import { StandBy } from "../../pages/stand-by";
+import { Theme } from "../theme";
 import { Main } from "../../pages/main";
 import { Cards } from "../../pages/cards";
 import { Card } from "../../pages/card";
+import { AddCard } from "../../pages/add-card";
+import { EditCard } from "../../pages/edit-card";
 import { NotFound404 } from "../../pages/404";
 
 import { useGetMediaQuery } from "../../hooks/useGetMediaQuery";
-import { AddCard } from "../../pages/add-card";
-import { EditCard } from "../../pages/edit-card";
 
 export const App = () => {
   const { isBroken } = useGetMediaQuery();
@@ -16,7 +17,7 @@ export const App = () => {
   return isBroken ? (
     <StandBy />
   ) : (
-    <>
+    <Theme>
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/cards" element={<Cards />} />
@@ -25,6 +26,6 @@ export const App = () => {
         <Route path="/cards/add" element={<AddCard />} />
         <Route path="*" element={<NotFound404 />} />
       </Routes>
-    </>
+    </Theme>
   );
 };

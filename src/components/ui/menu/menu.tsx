@@ -1,9 +1,10 @@
 import type { FC } from "react";
 
-import styles from "./theme-menu.module.css";
-import type { TThemeMenuUIProps } from "./types";
+import type { TMenuUIProps } from "./types";
 
-export const ThemeMenuUI: FC<TThemeMenuUIProps> = ({
+import styles from "./menu.module.css";
+
+export const MenuUI: FC<TMenuUIProps> = ({
   header,
   options,
   active,
@@ -11,16 +12,16 @@ export const ThemeMenuUI: FC<TThemeMenuUIProps> = ({
 }) => {
   return (
     <>
-      {header && <h1 className={styles["theme-menu__header"]}>{header}</h1>}
+      {header && <h1 className={styles["menu__header"]}>{header}</h1>}
       <nav>
-        <ul className={styles["theme-menu__list"]}>
+        <ul className={styles["menu__list"]}>
           {options.map(({ value }, index) => (
             <li>
               <button
                 type="button"
                 disabled={index === active}
                 onClick={() => onActive(index)}
-                className={styles["theme-menu__button"]}
+                className={styles["menu__button"]}
               >
                 {value}
               </button>
