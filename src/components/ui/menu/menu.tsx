@@ -16,7 +16,7 @@ export const MenuUI: FC<TMenuUIProps> = ({
       <nav>
         <ul className={styles["menu__list"]}>
           {options.map(({ value }, index) => (
-            <li>
+            <li key={index}>
               <button
                 type="button"
                 disabled={index === active}
